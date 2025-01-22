@@ -85,7 +85,7 @@
                                         <li><a href="#restBasics-authenticationauthorization">Authentication and Authorization</a></li>
                                         <li><a href="#restBasics-codes">Status codes and errors</a></li>
                                         <li><a href="#restBasics-linknodes">Link Nodes</a></li>
-                                        <li><a href="#restBasics-interactivepanel">Interactive Panel</a></li>
+                                        <li><a href="https://api.dottransfers.com/v2/panel/ui/index.html">Interactive Panel</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -119,11 +119,11 @@
                                                 <li><a class="subItemMenu" href="#documentation-booking-payment">Payment</a></li>
                                             </ul>
                                         </li>
-                                        <%--                                    <li class=""><a href="#documentation-quotes">Quote  operations</a>
+                                        <!--                                    <li class=""><a href="#documentation-quotes">Quote  operations</a>
                                         <ul class="nav">
                                             <li><a class="subItemMenu" href="#documentation-quotes-request">Request a Quote</a></li>
                                         </ul>
-                                    </li>--%>
+                                    </li>-->
                                     </ul>
                                 </li>
                             </ul>
@@ -173,7 +173,7 @@
                             </ul>
                             <br />
                             <p>Start trying the APIs using our interactive panel</p>
-                            <a href="<%=GetDevelopersUrl()%>/GetAccessTokenForm.aspx" class="btn btn-primary" role="button">Get a trial AccessToken now</a>
+                            <a href="https://api.dottransfers.com/v2/panel/ui/index.html" class="btn btn-primary" role="button">Get a trial AccessToken now</a>
                             <br />
                             <br />
                             <p>Integrate your business with our services</p>
@@ -243,7 +243,7 @@
                             <!-- Seccion: Endpoints and URIs -->
                             <div class="bs-docs-section">
                                 <h1 id="restBasics-uris" class="page-header">Endpoints and URIs</h1>
-                                <p>To see the complet list of the URIs, use the <a href="<%=GetApiUrl()%>/panel">interactive panel</a>.</p>
+                                <p>To see the complet list of the URIs, use the <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a>.</p>
                                 <h3>Request method and URI format</h3>
                                 <p>The request URL and URI structure for DotTransfers REST APIs conform to standard HTTP 1.1 request format.</p>
                                 <h3>The structure of the URI and URL use these basic formats:</h3>
@@ -299,7 +299,7 @@ GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=jfk</pre>
                                         <br />
                                     </li>
                                     <li>
-                                        <p>Copy the generated AccessToken to use it from our <a href="<%=GetApiUrl()%>/panel">interactive panel</a> or from a test application.</p>
+                                        <p>Copy the generated AccessToken to use it from our <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a> or from a test application.</p>
                                         <div class="bs-callout bs-callout-info">
                                             The AccessToken obtained will be valid for 6 months or 100 hits.
                                         When authentication is performed using a trial AccessToken, the rates shown are not real.
@@ -344,7 +344,7 @@ Content-Type:application/json</pre>
 }</pre>
                                     </li>
                                     <li>
-                                        <p>Save this AccessToken in your application. You will also be able to use it from our <a href="<%=this.GetApiUrl()%>/panel">interactive panel</a></p>
+                                        <p>Save this AccessToken in your application. You will also be able to use it from our <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a></p>
                                     </li>
                                 </ol>
 
@@ -583,7 +583,7 @@ Content-Type:application/json</pre>
 }</pre>
                                     </li>
                                     <li>
-                                        <p>Save this AccessToken in your application. You will also be able to use it from our <a href="<%=GetApiUrl()%>/panel">interactive panel</a></p>
+                                        <p>Save this AccessToken in your application. You will also be able to use it from our <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a></p>
                                     </li>
                                 </ol>
                             </div>
@@ -837,7 +837,7 @@ Access-Token:yourProductionAccessToken</pre>
                                 <pre class="highlight prettyprint ">
 POST /auth/accessToken</pre>
                                 <h4>Interactive Panel</h4>
-                                <p>To try it or see the parameters and errors' list, use our <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/AccessToken/AccessToken_GetAccessToken">interactive panel</a>.</p>
+                                <p>To try it or see the parameters and errors' list, use our <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a>.</p>
 
                                 <h4>Example</h4>
                                 <p>This example gets an AccessToken.</p>
@@ -900,11 +900,12 @@ Access-Token:yourProductionAccessToken</pre>
                                     </tbody>
                                 </table>
 
-                                <%--                            <p>To use the DotTransfers API operations, the client must send the <code>AccessToken</code> into every request's header.</p>
+                                <!--                            <p>To use the DotTransfers API operations, the client must send the <code>AccessToken</code> into every request's header.</p>
 
-<pre class="highlight prettyprint">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO
-Access-Token:yourProductionAccessToken</pre>--%>
+                                    <pre class="highlight prettyprint">
+                                    GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO
+                                    Access-Token:yourProductionAccessToken</pre> 
+                                -->
                             </div>
 
                             <!-- Seccion: Locations operations -->
@@ -986,7 +987,7 @@ GET /locations</pre>
                                 <h3>Interactive Panel</h3>
                                 <p>
                                     To try or see the parameters and errors' list, use our 
-                                    <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Location/Location_GetLocations">Interactive Panel</a>
+                                    <a href="https://api.dottransfers.com/v2/panel/ui/index.html">Interactive Panel</a>
                                 </p>
 
                                 <h6>Request</h6>
@@ -1192,7 +1193,7 @@ GET /bookings/ratedservices</pre>
                             </ul>
 
                             <h4>Interactive Panel</h4>
-                            <p>To try it or see the parameters and errors' list, use our <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_GetRatedServices">interactive panel</a>.</p>
+                            <p>To try it or see the parameters and errors' list, use our <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a>.</p>
 
                             <h4>Example</h4>
                             <p>This example searches for vehicles and rates of a transfer from the "miami beach resort & spa" to the Miami International Airport.</p>
@@ -1483,7 +1484,7 @@ POST /bookings/services</pre>
 
                             <h3>Interactive Panel</h3>
 
-                            <p>To try it or see the parameters and errors' list, use our <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_PostService">interactive panel</a>.</p>
+                            <p>To try it or see the parameters and errors' list, use our <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a>.</p>
 
                             <h4>Example</h4>
                             <p>
@@ -1496,7 +1497,7 @@ POST /bookings/services</pre>
 POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services
 Access-Token:yourProductionAccessToken</pre>
 
-                            <%--<pre class="highlight prettyprint linenums highlight-line [25]">--%>
+                            <!--<pre class="highlight prettyprint linenums highlight-line [25]">-->
                             <pre data-highlight-line="25" class="highlight prettyprint linenums">
 {
   "requester": {
@@ -1531,7 +1532,7 @@ Access-Token:yourProductionAccessToken</pre>
 </pre>
 
                             <h6>Response</h6>
-                            <%--<pre class="highlight prettyprint linenums highlight-line [3,80]">--%>
+                            <!--<pre class="highlight prettyprint linenums highlight-line [3,80]">-->
                             <pre data-highlight-line="3,80" class="highlight prettyprint linenums">
 [
   {
@@ -1704,7 +1705,7 @@ GET /bookings/services/{serviceCode}</pre>
                             </ul>
 
                             <h4>Interactive Panel</h4>
-                            <p>To try it or see the parameters and errors' list, use our <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_GetService">interactive panel</a>.</p>
+                            <p>To try it or see the parameters and errors' list, use our <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a>.</p>
 
                             <h4>Example</h4>
                             <p>This example gets the transfer service with serviceCode 7728.</p>
@@ -1911,7 +1912,7 @@ GET /bookings/services?statusGroup=Canceled</pre>
                             <p>
                                 To try it or see the parameters and errors' list, use our
                                 <br />
-                                <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_GetService">interactive panel</a>
+                                <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a>
                                 for GET /bookings/services?status=Reserved.
                                 <br />
                             </p>
@@ -2002,12 +2003,12 @@ PUT /bookings/services/{serviceCode}/cancellations</pre>
                         <p>
                             To try it or see the parameters and errors' list, use our
                             <br />
-                            <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_CancelServiceWithoutCharges">interactive panel</a>
+                            <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a>
                             for PUT /bookings/services/{serviceCode}/freecancellations.
                             <br />
                             or
                             <br />
-                            <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_CancelServiceWithCharges">interactive panel</a>
+                            <a href="https://api.dottransfers.com/v2/panel/ui/index.html">interactive panel</a>
                             for PUT /bookings/services/{serviceCode}/cancellations.
                         </p>
 
@@ -2213,14 +2214,18 @@ Access-Token:yourProductionAccessToken</pre>
 
 
 
-                        <%--                        <!-- Seccion: Quote operations-->
+                        <!--   
+
+                         <!-- Seccion: Quote operations-->
                         <div class="bs-docs-section">                            
                             <h1 id="documentation-quotes" class="page-header">Quote operations</h1>                                                    
                         
                             <!-- Seccion: Request a Quote-->                        
                             <h3 id="documentation-quotes-request" class="">Request a Quote</h3>          
                             <p>Documentation in progress</p>
-                        </div>   --%>
+                        </div>
+                        
+                        -->
                     </div>
 
                 </div>
