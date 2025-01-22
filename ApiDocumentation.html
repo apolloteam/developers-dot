@@ -1,0 +1,2240 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Online Booking Limo Api Documentation | DotTransfers</title>
+
+    <meta name="description" content="With our API, your customers have the ability to book a limo service online, request quotes and access to all data through your website or software. DotTransfers provides a REST API for third-party developer. The API allows developers to integrate third party applications with the DotTransfers service.">
+    <meta name="keywords" content="online limousine software, online reservation software, limo software, limousine, api documentation, reservation system, reservations, scheduling, online booking, management software, limousine hire, online limo software">
+    <meta name="robot" content="index,follow">
+    <meta name="copyright" content="Copyright © 2014 DotTransfers. All Rights Reserved.">
+    <meta name="author" content="www.dottransfers.com">
+    <meta name="language" content="EN">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/docs.min.css" />
+    <link rel="stylesheet" href="js/prittify/prettify.css" />
+    <link rel="stylesheet" type="text/css" href="css/Style.css" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+    <script src="js/prittify/prettify.js"></script>
+    <script src="js/ZeroClipboard/ZeroClipboard.js"></script>
+    <script src="js/commons.js"></script>
+    <script src="js/prettyPrint.highlightLines.js"></script>
+
+    <script type="text/javascript">
+        !function ($) {
+            $(function () {
+                /// <summary>
+                /// Animación de scroll para los marcadores del menú.
+                /// </summary>
+
+                $('.bs-docs-sidebar a').on('click', function (evt) {
+                    evt.preventDefault();
+                    var id = $(this).attr('href'),
+                        offset = $(id).offset();
+                    $('html, body').animate({ scrollTop: offset.top }, 'fast');
+                });
+            });
+
+            $(function () {
+                $('.highlight-line, [data-highlight-line]').highlightLines({ className: 'resaltarLinea' });
+            });
+        }(window.jQuery)
+    </script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+
+            <!-- Top Header. -->
+            <div id="topHeader">
+                <img src="img/logoDotWhite.png" />
+            </div>
+
+            <div class="container bs-docs-container">
+                <div class="row">
+
+                    <!-- Nav. menú. -->
+                    <div class="col-md-3">
+                        <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" data-spy="affix" role="complementary">
+                            <ul class="nav bs-docs-sidenav">
+                                <li class="active">
+                                    <a href="#apidot">DotTransfers API</a>
+                                    <ul class="nav">
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#restBasics">REST Basics</a>
+                                    <ul class="nav">
+                                        <li class="active"><a href="#restBasics-general">General information</a></li>
+                                        <li><a href="#restBasics-uris">Endpoints and URIs</a></li>
+                                        <li><a href="#restBasics-authenticationauthorization">Authentication and Authorization</a></li>
+                                        <li><a href="#restBasics-codes">Status codes and errors</a></li>
+                                        <li><a href="#restBasics-linknodes">Link Nodes</a></li>
+                                        <li><a href="#restBasics-interactivepanel">Interactive Panel</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#gettingStarted">Getting Started</a>
+                                    <ul class="nav">
+                                        <li class="active"><a href="#gettingStarted-getaccesstoken">How to get a trial AccessToken</a></li>
+                                        <li><a href="#gettingStarted-getprodaccesstoken">How to get a Production AccessToken</a></li>
+                                        <li><a href="#gettingStarted-bookatransfer">How to book a transfer</a></li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="#documentation">Documentation</a>
+                                    <ul class="nav">
+                                        <li class=""><a href="#documentation-auth">Auth operations</a>
+                                            <ul class="nav">
+                                                <li><a class="subItemMenu" href="#documentation-auth-accesstoken">Obtaining an AccessToken</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class=""><a href="#documentation-locations-operations">Locations operations</a>
+                                            <ul class="nav">
+                                                <li><a class="subItemMenu" href="#documentation-locations-geolocate">Geolocate locations</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class=""><a href="#documentation-booking">Booking  operations</a>
+                                            <ul class="nav">
+                                                <li><a class="subItemMenu" href="#documentation-booking-search">Search Rates (ratedServices)</a></li>
+                                                <li><a class="subItemMenu" href="#documentation-booking-book">Book a Service (services)</a></li>
+                                                <li><a class="subItemMenu" href="#documentation-booking-get">Get Service</a></li>
+                                                <li><a class="subItemMenu" href="#documentation-booking-getServices">Get Services</a></li>
+                                                <li><a class="subItemMenu" href="#documentation-booking-cancel">Cancel a Service</a></li>
+                                                <li><a class="subItemMenu" href="#documentation-booking-payment">Payment</a></li>
+                                            </ul>
+                                        </li>
+                                        <%--                                    <li class=""><a href="#documentation-quotes">Quote  operations</a>
+                                        <ul class="nav">
+                                            <li><a class="subItemMenu" href="#documentation-quotes-request">Request a Quote</a></li>
+                                        </ul>
+                                    </li>--%>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <a class="back-to-top" href="#apidot">Back to top
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contenido. -->
+                    <div class="col-md-9" role="main">
+
+                        <!-- Seccion: DotTransfers API -->
+                        <div class="bs-docs-section">
+                            <h1 id="apidot" class="page-header">DotTransfers API</h1>
+                            <h3>Book ground transportation services on demand with our APIs RESTFul.</h3>
+                            <p>
+                                The RESTFul DotTransfers APIs will help you to develop your ground transportation platform worldwide. 
+                            We developed a booking system based in APIs for developers to create or integrate a comprehensive solution 
+                            to book ground transportation services into your system, site or application.
+                            </p>
+                            <h3>Our APIs allows you to:</h3>
+                            <ul>
+                                <li>
+                                    <p>Get geo-locations by user text search.</p>
+                                </li>
+                                <li>
+                                    <p>Get the list of available vehicles in the area and their rates.</p>
+                                </li>
+                                <li>
+                                    <p>Booking transfers services.</p>
+                                </li>
+                                <li>
+                                    <p>Cancel reservations.</p>
+                                </li>
+                                <li>
+                                    <p>Check reservations and their status.</p>
+                                </li>
+                                <li>
+                                    <p>Get passengers recent locations.</p>
+                                </li>
+                                <li>
+                                    <p>Request quotes.</p>
+                                </li>
+                                <li>
+                                    <p>Register new affiliates.</p>
+                                </li>
+                            </ul>
+                            <br />
+                            <p>Start trying the APIs using our interactive panel</p>
+                            <a href="<%=GetDevelopersUrl()%>/GetAccessTokenForm.aspx" class="btn btn-primary" role="button">Get a trial AccessToken now</a>
+                            <br />
+                            <br />
+                            <p>Integrate your business with our services</p>
+                            <a href="<%=this.GetDotTransfersUrl()%>/integrations/" class="btn btn-primary" role="button">Get a production ApiKey now</a>
+                        </div>
+
+                        <!-- Seccion: Rest Basics -->
+                        <div class="bs-docs-section">
+                            <h1 id="restBasics" class="page-header">Rest Basics</h1>
+
+                            <!-- Seccion: General information -->
+                            <div class="bs-docs-section">
+                                <h1 id="restBasics-general" class="page-header">General information</h1>
+                                <p>Find information about how we build and version our REST APIs, how to use the APIs, and about useful bits.</p>
+
+                                <h3>DotTransfers advisories</h3>
+                                <p>
+                                    Our REST API technical documentation contains confidential and proprietary information belonging to DotTransfers, 
+                            which cannot be used or disclosed by you for any purpose other than those purposes that are expressly authorized
+                            by DotTransfers in your written agreement with DotTransfers.
+                                </p>
+                                <div class="bs-callout bs-callout-info">
+                                    When authentication is performed using a test token, the rates shown are not real.
+                                </div>
+
+                                <h3>Security</h3>
+                                <p>All request and response exchanges are sent over HTTPS.</p>
+                                <p>All security is based on SSL and a valid authentication token.</p>
+
+                                <h3>API standards</h3>
+                                <p>
+                                    DotTransfers REST APIs use the data structures that JavaScript Object Notation (JSON) defines for its data-interchange format. 
+                                Our REST APIs strictly define values that you can pass as request parameters. The API descriptions identify the data type for 
+                                each parameter in the request and all data types in the responses. For more information, see <a href="http://www.json.org" target="_blank">json.org</a>.
+                                </p>
+
+                                <h3>API version strategy</h3>
+                                <p>
+                                    Each of our REST APIs are versioned. When any of these APIs are called, an application must include the API version in the request URI, 
+                            in the form of vn, where n represents the version number.
+                                </p>
+
+                                <h4>Example</h4>
+                                <pre class="highlight prettyprint">
+<%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=jfk</pre>
+
+                                <h3>Version compatibility</h3>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            Changes to existing API versions. An existing API version will receive fixes and minor changes that expose new behavior when the 
+                                    changes are backward compatible and do not impact clients negatively.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>New API versions. A new API version will be added when new functionality and major changes are not backward compatible.</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            Multiple concurrent versions. DotTransfers will maintain multiple concurrent versions of an API. Before a version becomes obsolete, 
+                                    DotTransfers will provide adequate notification before removing the version from service.
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Seccion: Endpoints and URIs -->
+                            <div class="bs-docs-section">
+                                <h1 id="restBasics-uris" class="page-header">Endpoints and URIs</h1>
+                                <p>To see the complet list of the URIs, use the <a href="<%=GetApiUrl()%>/panel">interactive panel</a>.</p>
+                                <h3>Request method and URI format</h3>
+                                <p>The request URL and URI structure for DotTransfers REST APIs conform to standard HTTP 1.1 request format.</p>
+                                <h3>The structure of the URI and URL use these basic formats:</h3>
+                                <ul>
+                                    <li>
+                                        <p>URIs with request parameters.</p>
+                                    </li>
+                                    <li>
+                                        <p>URIs with variables.</p>
+                                    </li>
+                                </ul>
+                                <h3>URIs with request parameters</h3>
+                                <p>Basic structure example:</p>
+                                <pre class="highlight prettyprint">
+v1/locations?query=jfk</pre>
+                                <p>Where:</p>
+                                <p><code>/v1</code> is the individual API release version.</p>
+                                <p><code>/locations</code> is the URI of a requested object or resource.</p>
+                                <p><code>query=jfk</code> is the parameter and value pair (jfk is the IATA code for John F. Kennedy International Airport).</p>
+
+                                <h3>URIs with variables</h3>
+                                <p>Basic structure example:</p>
+                                <pre class="highlight prettyprint ">
+v1/bookings/services/{serviceCode}</pre>
+                                <p>
+                                    URI variables are shown in curly braces ({ }). You must replace the variable information with a value.
+                            In the preceding example, replace the whole word (including the curly braces) with a transfer service code, such as <code>3775</code>.
+                                </p>
+
+                                <h3>Method and URL example</h3>
+                                <pre class="highlight prettyprint ">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=jfk</pre>
+                                <p>Where:</p>
+                                <p><code>GET</code> is the HTTP method. The HTTP method is the verb that performs the action on the resource in the URI. </p>
+                                <p><code><%=GetApiUrl()%></code> is the base URL.</p>
+                            </div>
+
+                            <!-- Seccion: Authentication and Authorization -->
+                            <div class="bs-docs-section">
+                                <h1 id="restBasics-authenticationauthorization" class="page-header">Autentication and Authorization</h1>
+
+                                <h3>Authentication</h3>
+                                <p>
+                                    To use DotTransfers' API you need an AcessToken in order to be authenticated in our system. There are two ways to get an AccessToken: 
+                                requesting for a trial AccessToken or registering as an integrator in our system and generating an ApiKey and with this, get a Production AccessToken.
+                                </p>
+
+                                <h3>How to get a trial AccessToken</h3>
+                                <ol>
+                                    <li>
+                                        <p>Request for a trial AccessToken:</p>
+                                        <p><a href="<%=this.GetDevelopersUrl()%>/GetAccessTokenForm.aspx">Get a trial AccessToken now</a></p>
+                                        <br />
+                                    </li>
+                                    <li>
+                                        <p>Copy the generated AccessToken to use it from our <a href="<%=GetApiUrl()%>/panel">interactive panel</a> or from a test application.</p>
+                                        <div class="bs-callout bs-callout-info">
+                                            The AccessToken obtained will be valid for 6 months or 100 hits.
+                                        When authentication is performed using a trial AccessToken, the rates shown are not real.
+                                        </div>
+                                    </li>
+                                </ol>
+
+                                <h3>How to get a Production AccessToken</h3>
+                                <ol>
+                                    <li>
+                                        <p>Create an account in our system:</p>
+                                        <p><a href="<%=GetDotTransfersUrl()%>/integrations/">Create an account now...</a></p>
+                                        <br />
+                                    </li>
+                                    <li>
+                                        <p>You will get an e-mail with the instructions on how to get you ApiKey.</p>
+                                        <img src="img/stepsGetApiKey.jpg" />
+                                        <br />
+                                        <br />
+                                    </li>
+                                    <li>
+                                        <p>From your application, get an AccessToken calling the following method.</p>
+                                        <pre class="highlight prettyprint ">
+The AccessToken will be valid for 12 hours.</pre>
+
+                                        <h6>Request</h6>
+
+                                        <pre class="highlight prettyprint ">
+POST /auth/accessToken
+Content-Type:application/json</pre>
+
+                                        <pre class="highlight prettyprint linenums">
+{
+  "apiKey": "yourProductionApiKey"
+}</pre>
+                                        <h6>Response</h6>
+                                        <pre class="highlight prettyprint linenums">
+{
+  "token": "yourProductionAccessToken",
+  "expiresIn": null,
+  "maxHits": null
+}</pre>
+                                    </li>
+                                    <li>
+                                        <p>Save this AccessToken in your application. You will also be able to use it from our <a href="<%=this.GetApiUrl()%>/panel">interactive panel</a></p>
+                                    </li>
+                                </ol>
+
+                                <h3>Authorization</h3>
+                                <p>To use the DotTransfers' API operations, the client must send into every request's header the <code>AccessToken</code>, obtained from the /auth/accessToken method.</p>
+                                <h6>Request</h6>
+                                <pre class="highlight prettyprint ">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO
+Access-Token:yourProductionAccessToken</pre>
+
+                            </div>
+
+                            <!-- Seccion: Status codes and errors -->
+                            <div class="bs-docs-section">
+                                <a id="ServiceStatus"></a>
+                                <h1 id="restBasics-codes" class="page-header">Status codes and errors</h1>
+                                <h3>Common HTTP status codes</h3>
+                                <p>After your request is processed, the HTTP servers return a response with an HTTP status code. The following table shows common status codes.</p>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Status</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>200</td>
+                                            <td>OK</td>
+                                            <td>Operation successful.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>204</td>
+                                            <td>OK</td>
+                                            <td>Operation successful with no content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>400</td>
+                                            <td>Bad Request</td>
+                                            <td>Request invalid or incomplete.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>401</td>
+                                            <td>Unauthorized</td>
+                                            <td>Incorrect or no credentials found in header.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>403</td>
+                                            <td>Forbidden</td>
+                                            <td>Operation not allowed due to violation of business rules.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>404</td>
+                                            <td>Not Found</td>
+                                            <td>Requested resource not found.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>500</td>
+                                            <td>Internal Server Error</td>
+                                            <td>Server encountered and internal error while attempting to process the request. 
+                                        The response body will include a unique identifier that we can use to help locate the problem.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>503</td>
+                                            <td>Service Unavailable</td>
+                                            <td>Servers are up but busy at the moment. Try again later.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <h3>Application error format</h3>
+                                <p>
+                                    Application or business errors are returned when an API call fails because of incorrect or missing request parameters, 
+                            incorrectly formatted or missing values, operation not allowed due to violation of business rules, or when the service 
+                            cannot find results to fulfill a request. These errors occur during authentication requests, authenticated API calls, or call processing.
+                                </p>
+                                <p>The call, responds with the apropiate HTTP status code with a statusMessage containing extra data of the error.</p>
+                                <p>The error response is a single object <code>statusMessage</code>.</p>
+                                <pre class="highlight prettyprint linenums">
+{
+  "descrip": "BadRequest",
+  "code": "400",
+  "errorUniqueId": "ac97b9cf6def43febeec51a7abc665e0",
+  "errorCode": "",
+  "timeStamp": "2014-11-05T02:51:08.4539735Z",
+  "message": "Validation failed for one or more entities. See 'ValidationErrors' from for more details.",
+  "messageDetail": "",
+  "validationErrors": {
+    "accessTokenRequest": "Parameter \"accessTokenRequest\" was not specified.\r\n"
+  }
+}</pre>
+                                <div class="bs-callout bs-callout-info">
+                                    Important: Error messages are not localized and are intended to be references for the developer. They shouldn't be displayed directly to the user.
+                                </div>
+                                <h3>Suppress response codes</h3>
+                                <div class="bs-example">
+                                    If your application does not support HTTP status codes, you can add <code>suppress_response_codes</code> parameter at the end of the URL in the request and this will always return a <strong>200</strong> HTTP status code (although there was an error) but in the property statusMessage.code will contain the real HTTP code.<br />
+                                </div>
+                                <pre class="highlight prettyprint">
+POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services&suppress_response_codes
+</pre>
+                            </div>
+
+                            <!-- Seccion: Links Nodes -->
+                            <div class="bs-docs-section">
+                                <h1 id="restBasics-linknodes" class="page-header">Links Nodes</h1>
+                                <p>
+                                    DotTransfers REST APIs implements <a href="http://en.wikipedia.org/wiki/HATEOAS" target="_blank">HATEOAS</a> (Hypermedia as the Engine of Application State). 
+                                Client applications can interact with these links by using hypermedia that the DotTransfers servers provide dynamically. 
+                                Our REST APIs include a Links node in every resource.
+                                </p>
+                                <h4>Example</h4>
+                                <p>The GET method of services resource , responds with the following links:</p>
+                                <pre class="highlight prettyprint  linenums">
+{
+  "code": "775",
+  "scheduleDate": "2014-12-20T17:30:00",
+  "serviceType": "PTP",
+  ...
+  "passenger": {
+    "firstName": "Pan",
+    "lastName": "Peter",
+    "eMail": "peterpan@dot.com",
+    "phone": null,
+    "cellPhone": null
+  },
+  "passengerCount": 1,
+  "luggageCount": 1,
+  "freeCancellationDueDate": "2014-12-20T18:30:00",
+  "links": [
+    {
+      "rel": "self",
+      "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/775"
+    },
+    {
+      "rel": "cancel",
+      "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/775/freecancellations"
+    }
+  ]
+}</pre>
+
+                                <p>
+                                    The <code>self</code> link is the complete URL of the request that generated the response.<br />
+                                    The <code>cancel</code> link is the complete URL to cancel the service.
+                                </p>
+
+                            </div>
+
+                            <!-- Seccion: Interative Panel -->
+                            <div class="bs-docs-section">
+                                <h1 id="restBasics-interactivepanel" class="page-header">Interactive Panel</h1>
+
+                                <p>
+                                    DotTransfer provides an interactive panel with which you can test the APIs, see the parameters and the definitions of 
+                                the request and response classes, and the error list.
+                                </p>
+
+                                <p>
+                                    You can use it with a trial or production AccessToken:<br />
+                                    <a href="<%=GetApiUrl()%>/panel">Interactive Panel</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- Seccion: Getting Started -->
+                        <div class="bs-docs-section">
+                            <h1 id="gettingStarted" class="page-header">Getting Started</h1>
+
+                            <div class="bs-callout bs-callout-info">
+                                Using DotTransfers APIs is cost-free. Visit <a href="<%=GetDotTransfersUrl()%>/integrations/">DotTransfers…</a>
+                                for further commercial information.
+                            </div>
+                            <p>
+                                First thing to be made to be able to use DotTransfers' API is to get an AcessToken in order to be authenticated in our system. 
+                            There are two ways to get the AccessToken: requesting for a trial AccessToken or registering as an integrator in our system 
+                            and generate an ApiKey and with this, get a Production AccessToken.
+                            </p>
+
+                            <!-- Seccion: How To Get A Trial AccessToken -->
+                            <div class="bs-docs-section">
+                                <h3 id="gettingStarted-getaccesstoken" class="">How to get a trial AccessToken</h3>
+                                <ol>
+                                    <li>
+                                        <p>Request for a trial AccessToken</p>
+                                        <p><a href="<%=GetApiProtocol()%>developer.dottransfers.com/GetAccessTokenForm.aspx">Get a trial AcessToken now…</a></p>
+                                        <br />
+                                    </li>
+                                    <li>
+                                        <p>Copy the generated AccessToken to use it from our <a href="<%=GetApiUrl()%>/panel">interactive panel</a> or from a test application.</p>
+                                        <div class="bs-callout bs-callout-info">
+                                            The AccessToken obtained will be valid for 6 months or 100 hits.
+                                    When authentication is performed using a trial AccessToken, the rates shown are not real.
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <!-- Seccion: How To Get A Production AccessToken -->
+                            <div class="bs-docs-section">
+                                <h3 id="gettingStarted-getprodaccesstoken" class="">How to get a Production AccessToken</h3>
+                                <ol>
+                                    <li>
+                                        <p>Create an account in our system:</p>
+                                        <p><a href="<%=GetDotTransfersUrl()%>/integrations/">Create an account now...</a></p>
+                                        <br />
+                                    </li>
+                                    <li>
+                                        <p>You will get an email with the instructions on how to get you ApiKey.</p>
+                                        <img src="img/stepsGetApiKey.jpg" />
+                                        <br />
+                                        <br />
+                                    </li>
+                                    <li>
+                                        <p>You will get an e-mail with the instructions on how to get you ApiKey.</p>
+                                        <div class="bs-callout bs-callout-info">
+                                            The AccessToken will be valid for 12 hours.
+                                        </div>
+                                        <h6>Request</h6>
+                                        <pre class="highlight prettyprint ">
+POST /auth/accessToken
+Content-Type:application/json</pre>
+
+                                        <pre class="highlight prettyprint linenums">
+{
+  "apiKey": "yourProductionApiKey"
+}</pre>
+                                        <h6>Response</h6>
+                                        <pre class="highlight prettyprint linenums">
+{
+  "token": "yourProductionAccessToken",
+  "expiresIn": null,
+  "maxHits": null
+}</pre>
+                                    </li>
+                                    <li>
+                                        <p>Save this AccessToken in your application. You will also be able to use it from our <a href="<%=GetApiUrl()%>/panel">interactive panel</a></p>
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <!-- Seccion: How To Book A Transfer -->
+                            <div class="bs-docs-section">
+                                <h3 id="gettingStarted-bookatransfer" class="">How to book a transfer</h3>
+                                <p>The main goal of DotTransfers APIs is to allow you to book transfers worldwide. We will show you the steps to book a transfer with the folling example:</p>
+                                <ol>
+                                    <li>
+                                        <p>Get the list of available vehicles and rates for a transfer from a hotel to an airport:</p>
+                                        <h5>Request</h5>
+                                        <pre class="highlight prettyprint ">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/ratedservices?scheduleDate=2014-12-17T18:30&originSearchText=miami+beach+resort+%26+spa&destinationSearchText=mia
+Access-Token:yourProductionAccessToken</pre>
+                                        <h6>Response</h6>
+                                        <pre class="highlight prettyprint linenums">
+[
+  {
+    "scheduleDate": "2014-12-17T18:30:00",
+    "scheduleDateUtc": "2014-12-17T23:30:00Z",
+    "vehicle": {
+      "category": "STD",
+      "descrip": "Standard Sedan",
+      "obs": "Standard Sedan",
+      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "maxPax": 3,
+      "maxLuggage": 2,
+      "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
+      "featuresIds": "|31|33|34|36|",
+      "finalRate": 103.15,
+      "quantity": 1,
+      "minimumTimeRequired": 180
+    },
+    "rutePoints": [
+      {
+        "action": "PU",
+        "order": 0,
+        "location": {
+          "name": "Miami Beach Resort & Spa, Collins Avenue, Miami Beach, FL, United States",
+          "address": "4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "address2": null,
+          "summary": "Miami Beach Resort & Spa, 4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "countryCode": "US",
+          "latitude": "25.823953",
+          "longitude": "-80.121568",
+          "category": "establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": {
+            "timeZoneId": "America/New_York",
+            "timeZoneName": "Eastern Standard Time",
+            "rawOffset": -18000,
+            "dstOffset": -14400
+          }
+        },
+        "flight": null
+      },
+      {
+        "action": "DO",
+        "order": 1,
+        "location": {
+          "name": "Miami International Airport (MIA)",
+          "address": "Miami, Florida, United States",
+          "address2": null,
+          "summary": "Miami International Airport (MIA) - Miami, Florida, United States",
+          "countryCode": "US",
+          "latitude": "25.7931995391846",
+          "longitude": "-80.2906036376953",
+          "category": "airport;establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": null
+        },
+        "flight": null
+      }
+    ],
+    "timeRequired": 0,
+    "roundTrip": "no",
+    "serviceType": "PTP",
+    "objectToken": "08eb9a4f492e4c23b8fbcd73cd93c327",
+    "links": []
+  }
+]</pre>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            Insert the booking. For this, you must send the requester and passenger data, and the <code>ratedService.objectToken</code> obtained in previous request.
+                                    This token contains data from a rated transfer service that include the schedule date, vehicle type, rate and the rute points as a <strong>unity.</strong>
+                                        </p>
+                                        <h6>Request</h6>
+                                        <pre class="highlight prettyprint ">
+POST <%= GetApiProtocol()%>api.dottransfers.com/v1/bookings/services
+Access-Token:yourProductionAccessToken</pre>
+
+                                        <pre class="highlight prettyprint linenums">
+{
+  "requester": {
+    "firstName": "Peter",
+    "lastName": "Pan",
+    "email": "peterpan@dot.com",
+    "phone": "",
+    "title": "Sr",
+    "languageCode": "en"
+  },
+  "serviceRequest": [
+    {
+      "passenger": {
+        "company": none,
+        "firstName": "Peter",
+        "lastName": "Pan",
+        "email": "peterpan@dottransfers.com",
+        "phone": "",
+        "cellPhone": "",
+        "title": "Sr",
+        "languageCode": "en"
+      },
+      "passengerCount": "1",
+      "luggageCount": "1",
+      "comments": "",
+      "ratedServiceObjectToken": "08eb9a4f492e4c23b8fbcd73cd93c327",
+      "flight": null,
+      "complementaryAddressData": null
+    }
+  ]
+}</pre>
+                                        <h6>Response</h6>
+
+                                        <pre class="highlight prettyprint linenums">
+[
+  {
+    "code": "7315",
+    "scheduleDate": "2014-12-17T18:30:00",
+    "scheduleDateUtc": "2014-12-17T23:30:00Z",
+    "serviceType": "PTP",
+    "rutePoints": [
+      {
+        "action": "PU",
+        "order": 0,
+        "location": {
+          "name": "Miami Beach Resort & Spa, Collins Avenue, Miami Beach, FL, United States",
+          "address": "4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "address2": null,
+          "summary": "Miami Beach Resort & Spa, 4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "countryCode": "US",
+          "latitude": "25.823953",
+          "longitude": "-80.121568",
+          "category": "establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": {
+            "timeZoneId": "America/New_York",
+            "timeZoneName": "Eastern Standard Time",
+            "rawOffset": -18000,
+            "dstOffset": -14400
+          }
+        },
+        "flight": null
+      },
+      {
+        "action": "DO",
+        "order": 1,
+        "location": {
+          "name": "Miami International Airport (MIA)",
+          "address": "Miami, Florida, United States",
+          "address2": null,
+          "summary": "Miami International Airport (MIA) - Miami, Florida, United States",
+          "countryCode": "US",
+          "latitude": "25.793199539184",
+          "longitude": "-80.29060363769",
+          "category": "airport;establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": null
+        },
+        "flight": null
+      }
+    ],
+    "timeRequired": 0,
+    "passenger": {
+      "company": null,
+      "firstName": "Peter",
+      "lastName": "Pan",
+      "eMail": "peterpan@dottransfers.com",
+      "phone": "",
+      "cellPhone": "",
+      "title": "Sr",
+      "languageCode": "en"
+    },
+    "passengerCount": 1,
+    "luggageCount": 1,
+    "roundTrip": "no",
+    "comments": "",
+    "vehicle": {
+      "category": "STD",
+      "descrip": "Standard Sedan",
+      "obs": "Standard Sedan",
+      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "maxPax": 3,
+      "maxLuggage": 2,
+      "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
+      "featuresIds": "|31|33|34|36|",
+      "finalRate": 103.15,
+      "quantity": 1,
+      "minimumTimeRequired": 180
+    },
+    "status": "Online Payment pending",
+    "freeCancellationDueDate": "2014-12-17T21:30:00Z",
+    "paymentGatewayUrl": "https://redapp.dottransfers.com/paygateway/Default.aspx?enc=3i6VYsQS5uB9N",
+    "paymentConfirmationCode": "",
+    "links": [
+      {
+        "rel": "self",
+        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315"
+      },
+      {
+        "rel": "cancel",
+        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315/freecancellations"
+      }
+    ]
+  }
+]</pre>
+                                    </li>
+                                </ol>
+                                <div class="bs-callout bs-callout-info">
+                                    The booking will be inserted but will be in the <strong>"Online Payment pending"</strong> status.
+                            The response contains a link to redirect the user to the payment gateway.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seccion: Documentation -->
+                        <div class="bs-docs-section">
+                            <h1 id="documentation" class="page-header">Documentation</h1>
+
+                            <!-- Seccion: Auth operations-->
+                            <div class="bs-docs-section">
+                                <h1 id="documentation-auth" class="page-header">Auth operations</h1>
+
+                                <!-- Seccion: Obtaining an AccessToken-->
+                                <h3 id="documentation-auth-accesstoken" class="">Obtaining an AccessToken</h3>
+                                <p>
+                                    To use DotTransfers' API you need an <code>AcessToken</code> in order to be authenticated in our system. DotTransfers APIs 
+                                uses an <code>ApiKey</code> to identify your acount. You need an <code>ApiKey</code> to get a production <code>AccessToken</code>.
+                                </p>
+                                <h4>HTTP method and endpoint</h4>
+                                <pre class="highlight prettyprint ">
+POST /auth/accessToken</pre>
+                                <h4>Interactive Panel</h4>
+                                <p>To try it or see the parameters and errors' list, use our <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/AccessToken/AccessToken_GetAccessToken">interactive panel</a>.</p>
+
+                                <h4>Example</h4>
+                                <p>This example gets an AccessToken.</p>
+
+                                <h6>Request</h6>
+                                <pre class="highlight prettyprint ">
+POST <%=GetApiProtocol()%>api.dottransfers.com/v1/auth/accessToken
+Content-Type:application/json</pre>
+
+                                <pre class="highlight prettyprint linenums">
+{
+  "apiKey": "yourProductionApiKey"
+}</pre>
+
+                                <h6>Response</h6>
+
+                                <pre class="highlight prettyprint linenums">
+{
+  "token": "yourProductionAccessToken",
+  "expiresIn": 720,
+  "maxHits": null
+}</pre>
+
+                                <h4>Usage Notes</h4>
+                                <p>To use the dotTransfer's API operations, the client must send the <code>AccessToken</code> into every request header.</p>
+
+                                <pre class="highlight prettyprint ">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO
+Access-Token:yourProductionAccessToken</pre>
+
+                                <h4>Error response</h4>
+
+                                <p>
+                                    For more information about HTTP status codes and error response formats, see 
+                                <a href="#ServiceStatus">Status codes and errors</a>.
+                                </p>
+
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Verb</th>
+                                            <th>Response</th>
+                                            <th>ErrorCode</th>
+                                            <th>Reason</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>POST</td>
+                                            <td style="width: 130px">401 Unauthorized</td>
+                                            <td class="errCodeCol"></td>
+                                            <td>Access denied because an invalid, inactive or removed ApiKey.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>POST</td>
+                                            <td>401 Unauthorized</td>
+                                            <td class="errCodeCol">ERR.USR.INVALIDCREDENTIALS</td>
+                                            <td>Access denied because user not found or incorrect password.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <%--                            <p>To use the DotTransfers API operations, the client must send the <code>AccessToken</code> into every request's header.</p>
+
+<pre class="highlight prettyprint">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO
+Access-Token:yourProductionAccessToken</pre>--%>
+                            </div>
+
+                            <!-- Seccion: Locations operations -->
+                            <div class="bs-docs-section">
+                                <h1 id="documentation-locations-operations" class="page-header">Locations operations</h1>
+
+                                <!-- Seccion: Geolocate locations -->
+                                <h3 id="documentation-locations-geolocate">Geolocate locations</h3>
+                                <p>
+                                    Gets a list with one or many geolocated locations resulting from a query made through search by text. 
+                                    Geocoding is the process of converting addresses (like "1600 Amphitheatre Parkway, Mountain View, CA") 
+                                    into geographic coordinates (like latitude 37.423021 and longitude -122.083739).
+                                    These geolocated locations are required and used as origin and destination when obtaining rates in the 
+                                    booking operations (<code>ratedServices</code>).
+                                </p>
+
+                                <p>The search text can be:</p>
+                                <ul>
+                                    <li>Airport Name</li>
+                                    <li>Airport IATA code</li>
+                                    <li>Hotel name</li>
+                                    <li>Establishment name (theatre, hospital, etc.)</li>
+                                    <li>A simple address</li>
+                                    <li>A complete address</li>
+                                </ul>
+
+                                <p>
+                                    The more precise the search text is, the more precise will be the result. For example, if the search text 
+                                    is “airports florida”, the result will be all the airports in Florida. If the search text is MCO 
+                                    (IATA's code for Orlando International Airport) you will get the exact result.
+                                </p>
+
+                                <h4>Example</h4>
+
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Search text</th>
+                                            <th>Response description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>MCO</td>
+                                            <td>Gets Orlando International Airport.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>airports florida</td>
+                                            <td>Gets all airports in Florida, United States.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>miami beach resort & spa, miami</td>
+                                            <td>Gets the exact hotel address.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>miami beach resort</td>
+                                            <td>Gets a list of establishments with that name all over the world.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4833 Collins Ave</td>
+                                            <td>Gets different geolocations with that name since the same address could be found in different cities.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4833 Collins Ave, miami beach, FL</td>
+                                            <td>Gets only one geolocation for this address.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <p>
+                                    Use this API when you wish to give to the user the option of searching and/or geolocating an origin and a destination for then using them to 
+                                    get service rates for that transfer.
+                                </p>
+
+                                <h3>HTTP method and endpoint</h3>
+                                <pre class="highlight prettyprint ">
+GET /locations</pre>
+
+                                <h3>Interactive Panel</h3>
+                                <p>
+                                    To try or see the parameters and errors' list, use our 
+                                    <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Location/Location_GetLocations">Interactive Panel</a>
+                                </p>
+
+                                <h6>Request</h6>
+                                <pre class="highlight prettyprint ">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO</pre>
+
+                                <h6>Response</h6>
+                                <pre class="highlight prettyprint linenums">
+[
+  {
+    "name": "Orlando International Airport (MCO)",
+    "address": "Orlando, Florida, United States",
+    "address2": null,
+    "summary": "Orlando International Airport (MCO) - Orlando, Florida, United States",
+    "countryCode": "US",
+    "latitude": "28.4293994903564",
+    "longitude": "-81.3089981079102",
+    "category": "airport;establishment",
+    "isConcrete": "yes",
+    "objectToken": "779547971e3542ab8e0634fe3483afae"
+  }
+]</pre>
+
+                                <h4>Usage notes</h4>
+                                <ul>
+                                    <li>If when calling <code>locations</code> only one result is obtained, you will be able to use it directly to obtain rates. 
+                                        If more than one result is obtained, you will need to show it to the users for them to select a result or 
+                                        ask for more precise information for the search text in order to refine the search.
+                            
+
+                                        <p>
+                                            The <code>category</code> property of a <code>locationInfo</code> object contains the description of the category resulting from the 
+                                            geolocation of a location. A <code>locationInfo</code> object might contain one or many categories.
+                                        </p>
+
+
+                                        <div class="bs-callout bs-callout-info">
+                                            This property is important since, depending on each category and if it is used to define the origin of a transfer, 
+                                            it determines if a request of additional information to the user before booking will be needed. For example, 
+                                            if the resulting category is airport, the request of the flight information such as airline, flights number, etc. will be needed. 
+                                        </div>
+
+                                        <h5>Possible Values</h5>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Category</th>
+                                                    <th>Notes</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>airport</td>
+                                                    <td>If the <code>locationInfo</code> is used as origin of the transfer, it requires the <code>flight</code> information in order to book a transfer.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>establishment</td>
+                                                    <td>It does not require additional information to book a transfer, unless the passenger specifies it.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>street_address</td>
+                                                    <td>If the <code>locationInfo</code> is used as origin of the transfer, it requires specifying additional contact information, such as floor, office, etc.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>political</td>
+                                                    <td>This category is filtered.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
+
+                                    <li>The call to <code>locations</code> only returns the concrete locations where a driver can contact the passenger. For example, an address 
+                                        or a hotel are concrete locations, but for the opposite, a country or city are not.</li>
+
+                                    <li>The property <code>objectToken</code>is an identifier that represents an object stored in the cache of our system to prevent that 
+                                        the object's information is altered.  When the APIs require it, instead of sending or assigning an object, an <code>objectToken</code>will need to be assigned, and then the API will recover that object in its original status.</li>
+
+                                    <li>The <code>objectToken</code>of the <code>locationInfo</code> are required, as one of its variables of query of origin and/or destination, to request for rates of transfer services.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Seccion: Booking Operations-->
+                            <p class="bs-docs-section">
+                                <h1 id="documentation-booking" class="page-header">Booking Operations</h1>
+                                <p>
+                                    The booking API's operations will let you query transfer service rates, vehicle availability, make reservations 
+                                from transfer services, and make queries and cancellations.
+                                </p>
+                            <ul>
+                                <li>Search for Rates (rated services)</li>
+                                <li>Book a Transfer Service</li>
+                                <li>Get a Service</li>
+                                <li>Cancel a Service</li>
+                            </ul>
+
+                            <!-- Seccion: Search Rates (ratedServices)-->
+                            <h3 id="documentation-booking-search" class="">Search for Rates (rated services)</h3>
+                            <p>
+                                This method returns a list of different vehicle categories with their features and rates that can perform the 
+                                passenger's transfer, either from point to point (from an origin to a destination), or at disposal (from a 
+                                specific origin and for the time required) at a specific date and time.<br />
+                                We call this data "rated service" (<code>ratedService</code>). A <code>ratedService</code> contains data of a rated transfer service 
+                                that includes the scheduled date, vehicle's category and features, rates and route points for the service, as a <strong>unity</strong>.<br />
+                                The <code>ratedService</code> is required for booking.
+                            </p>
+
+                            <p>This method requires three parameters:</p>
+                            <ul>
+                                <li>A date (necessary to know when will the pick up be).</li>
+                                <li>An origin (necessary to know where will the pick up be)</li>
+                                <li>A destination, or time of use (with this data, in addition to the date and origin, 
+                                    we can find the available vehicles list and their rates for this trip).</li>
+                            </ul>
+
+                            <p>
+                                There are different ways to specify an origin and a destination. The following table shows the description of each 
+                                of them and their possible combinations to send them as parameters for this method:
+                            </p>
+
+                            <p>From any of this:</p>
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Origin</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>originLat, originLng</td>
+                                        <td>Defines an origin through the inverse geocoding of the specified geographic coordinates (latitude and longitude).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>originSearchText</td>
+                                        <td>Defines an origin through the geocoding of the address specified by text.<br />
+                                            NOTE: If the geoconding's result contains only one location, is taken as a valid origin. 
+                                            If the result does not contain a location or has more than one, is taken as invalid origin.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>originSearchText</td>
+                                        <td>Defines an origin through an <code>objectoToken</code> that corresponds to a <code>locationInfo</code>
+                                            previously geolocalized by the method <strong>GET /locations</strong>.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>To any of this:</p>
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Destination</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>destinationLat, destinationLng</td>
+                                        <td>Defines a destination through the inverse geocoding of the specified geographic coordinates (latitude and longitude).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>destinationSearchText</td>
+                                        <td>Defines a destiny through the geocoding of the address specified by text.<br />
+                                            NOTE: If the geocoding's result contains only one location, is taken as a valid origin. 
+                                            If the result does not contain a location or has more than one, is taken as invalid destination.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>destinationObjectToken</td>
+                                        <td>Defines a destination through an <code>objectoToken</code> that corresponds to a <code>locationInfo</code>, 
+                                            previously geolocalized by the method <strong>GET /locations</strong>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>time</td>
+                                        <td>Defines a disposal transfer service.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h4>Suitability</h4>
+                            <p>
+                                Use this method when you have data of origin, destination or time at disposal of the trip you would like to make and wish 
+                                to request for rates and vehicles available for that service, in order to make a booking then.
+                            </p>
+
+                            <br />
+                            <h4>HTTP method and endpoint</h4>
+                            <pre class="highlight prettyprint">
+GET /bookings/ratedservices</pre>
+
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li>scheduleDate</li>
+                                <li>originLat</li>
+                                <li>originLng</li>
+                                <li>originSearchText</li>
+                                <li>originObjectToken</li>
+                                <li>destinationLat</li>
+                                <li>destinationLng</li>
+                                <li>destinationSearchText</li>
+                                <li>destinationObjectToken</li>
+                                <li>time</li>
+                            </ul>
+
+                            <h4>Interactive Panel</h4>
+                            <p>To try it or see the parameters and errors' list, use our <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_GetRatedServices">interactive panel</a>.</p>
+
+                            <h4>Example</h4>
+                            <p>This example searches for vehicles and rates of a transfer from the "miami beach resort & spa" to the Miami International Airport.</p>
+
+                            <h6>Request</h6>
+                            <pre class="highlight prettyprint">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/ratedservices?scheduleDate=2014-12-17T18:30&originSearchText=miami+beach+resort+%26+spa&destinationSearchText=mia
+Access-Token:yourProductionAccessToken</pre>
+
+                            <h6>Response</h6>
+                            <pre class="highlight prettyprint linenums">
+[
+  {
+    "scheduleDate": "2014-12-17T18:30:00",
+    "scheduleDateUtc": "2014-12-17T23:30:00Z",
+    "vehicle": {
+      "category": "STD",
+      "descrip": "Standard Sedan",
+      "obs": "Standard Sedan",
+      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "maxPax": 3,
+      "maxLuggage": 2,
+      "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
+      "featuresIds": "|31|33|34|36|",
+      "finalRate": 103.15,
+      "quantity": 1,
+      "minimumTimeRequired": 180
+    },
+    "rutePoints": [
+      {
+        "action": "PU",
+        "order": 0,
+        "location": {
+          "name": "Miami Beach Resort & Spa, Collins Avenue, Miami Beach, FL, United States",
+          "address": "4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "address2": null,
+          "summary": "Miami Beach Resort & Spa, 4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "countryCode": "US",
+          "latitude": "25.823953",
+          "longitude": "-80.121568",
+          "category": "establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": {
+            "timeZoneId": "America/New_York",
+            "timeZoneName": "Eastern Standard Time",
+            "rawOffset": -18000,
+            "dstOffset": -14400
+          }
+        },
+        "flight": null
+      },
+      {
+        "action": "DO",
+        "order": 1,
+        "location": {
+          "name": "Miami International Airport (MIA)",
+          "address": "Miami, Florida, United States",
+          "address2": null,
+          "summary": "Miami International Airport (MIA) - Miami, Florida, United States",
+          "countryCode": "US",
+          "latitude": "25.7931995391846",
+          "longitude": "-80.2906036376953",
+          "category": "airport;establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": null
+        },
+        "flight": null
+      }
+    ],
+    "timeRequired": 0,
+    "roundTrip": "no",
+    "serviceType": "PTP",
+    "objectToken": "08eb9a4f492e4c23b8fbcd73cd93c327",
+    "links": []
+  }
+]</pre>
+
+                            <h4>Usage Notes</h4>
+
+                            <p>When to use <code>originLat</code> y <code>originLng</code> and/or <code>destinationLat</code> and <code>destinationLng</code>? Use these parameters if:</p>
+                            <ul>
+                                <li>Your application allows the user to select origin and destination in a map and get the geographic coordinates.</li>
+                                <li>You already have the geographic coordinates of origin and destination from another service or a database.</li>
+                                <li>Your application can access the GPS and take the user's location as origin.</li>
+                            </ul>
+
+                            <p>When to use <code>originSearchText</code> and/or <code>destinationSearchText</code>? Use these parametes if:</p>
+                            <ul>
+                                <li>Your application has a preloaded list with the IATA codes and allows you to select one of this for origin as well as destination.</li>
+                                <li>If your application asks the user to enter the IATA code of an airport for origin as well as destination.</li>
+                                <li>If you have a complete and exact location´s postal address, including city and country.</li>
+                            </ul>
+
+                            <div class="bs-callout bs-callout-info">
+                                With these parameters, the GET ratedServices method will try to geocodify according to the search text. If the geocoding result contains 
+                                only one location, it is taken as a valid point. If the result does not contain a location or has more than one, it is taken as an invalid point.
+                            </div>
+
+                            <p>When to use originObjectToken and/or destinationObjectToken? Use these parameters if:</p>
+                            <ul>
+                                <li>Your application allows the user to search for a location with the GETlocations method through a search text that returns a list of 
+                                    suggestions according to that text, and then allows selecting one of the resulting <code>locationInfo</code> (if more than one result is obtained). 
+                                    To assign a <code>locationInfo</code> as origin or destination you must assign the property <code>locationInfo.objectToken</code> as a parameter.
+                                </li>
+                            </ul>
+
+                            <p>When to use time? Use this parameter when:</p>
+                            <ul>
+                                <li>Your application allows the user to select “time” when willing to have a vehicle at disposal.</li>
+                            </ul>
+
+                            <div class="bs-callout bs-callout-info">
+                                If you use the parameter time it requires assigning an origin with any of the parameters.
+                            </div>
+                            
+                            <h4>Error response</h4>
+
+                            <p>
+                                For more information about HTTP status codes and error response formats, see 
+                            <a href="#ServiceStatus">Status codes and errors</a>.
+                            </p>
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Verb</th>
+                                        <th>Response</th>
+                                        <th>ErrorCode</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>GET</td>
+                                        <td style="width: 130px">404 Not Found</td>
+                                        <td class="errCodeCol">ERR.USR.SAVEDLOCATIONNOTFOUND</td>
+                                        <td>SavedLocation not found.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- Seccion: Book a Service (services)-->
+                            <h3 id="documentation-booking-book" class="">Book a Transfer Service (services)</h3>
+                            <p>It allows to generate a booking of transfer service.</p>
+
+                            <p>
+                                For this, you must set the requester and passenger data, and the <code>ratedService.ObjectToken</code> obtained 
+                                in the <a href="#documentation-booking-get">GET /bookings/ratedServices</a>.  This token contains data from a rated transfer 
+                                service that includes the scheduled date, vehicle type, rate and the route points as a <strong>unity</strong>.
+                            </p>
+
+                            <p>
+                                After using this method, the booking will be inserted but it will be in the <strong>"Online Payment Pending"</strong> status. 
+                                The response contains a link that redirects the user to the payment gateway. For further information, please view  
+                                <a href="#documentation-booking-payment">Payment documentation.</a>
+                            </p>
+
+                            <p>
+                                The reservation can be cancelled any time. A cancellation may be with charge or not. This will depend on the cancellation 
+                                date and the property value <code>service.freeCancellationDueDate</code>. The property value <code>service.freeCancellationDueDate</code>
+                                varies according to the transfer's origin and the vehicle category. For further information, please view 
+                                <a href="#documentation-booking-cancel">Cancel a Service</a>.
+                            </p>
+
+                            <h4>Service Status</h4>
+
+                            <p>
+                                After inserting a transfer service in our system, it will go through different status. The following table describes the 
+                                different transfers' states.
+                            </p>
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%">StatusCode</th>
+                                        <th style="width: 33%">Status</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>PaymentPending</td>
+                                        <td>Online Payment pending</td>
+                                        <td>The reservation has been generated but the payment is pending.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PaymentExpired</td>
+                                        <td>Online Payment expired</td>
+                                        <td>The limit time to pay for the Reservation has expired. The reservation has been cancelled.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reserved</td>
+                                        <td>Reserved</td>
+                                        <td>The Reservation is confirmed.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledSupplier</td>
+                                        <td>Cancelled by Supplier</td>
+                                        <td>The service provider has cancelled the reservation.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledRequesterFree</td>
+                                        <td>Cancelled by requester</td>
+                                        <td>The requester has cancelled the reservation (free of charge).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledRequesterCost</td>
+                                        <td>Cancelled by requester (with cost)</td>
+                                        <td>The requester has cancelled the reservation (with charges).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>InProgres</td>
+                                        <td>In progres</td>
+                                        <td>When the driver is on the way to pick the passengers up.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WithPax</td>
+                                        <td>With Passenger</td>
+                                        <td>When driver and passenger meet and are on the way to the destination place.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NoShow</td>
+                                        <td>No Show</td>
+                                        <td>When the driver is at the origin place but the passenger is not there.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledInProgressSupplier</td>
+                                        <td>Cancelled in progress (by Supplier)</td>
+                                        <td>When the driver is on the way to pick the passenger up but had to cancel the service for any 
+                                            technical or traffic problem, or bad weather conditions.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledInProgressPax</td>
+                                        <td>Cancelled in progress (by Passenger)</td>
+                                        <td>When driver and passenger meet at the origin place, but the passenger decides not to use the service.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Realized</td>
+                                        <td>Realized</td>
+                                        <td>When the driver leaves the passenger at the destination, or the trip finishes.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Down</td>
+                                        <td>Down</td>
+                                        <td>The Reservation has been generated but none of the service providers accepted the service 
+                                            for any inconsistency or for lack of availability. An agent will contact the passenger 
+                                            to explain the reason and find a solution.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h4>ComplementaryAddressData and Flight</h4>
+                            <ul>
+                                <li>If the <code>locationInfo</code> of the transfer's origin category is "street_address" the property 
+                                    <code>complementaryAddressData</code> must be set with more precise contact data such as floor, 
+                                    apartment or office number, etc. Otherwise, assign the property <code>flight</code> must be set to null.</li>
+                                <li>If the locationInfo of the transfer's origin contains the category “airport”, the propery <code>flight</code>
+                                    must be set with the flight information such as airline, flights number, etc. Otherwise, assign the property 
+                                    <code>flight</code> must be set to null.</li>
+
+                            </ul>
+
+
+                            <div class="bs-callout bs-callout-info">
+                                To know the category of the origin's locationinfo, you must read the <code>ratedServices.rutePoints[0].location.category</code>
+                                property, obtained previously with the <a href="#documentation-booking-get">GET /bookings/ratedServices</a> method.
+                            </div>
+
+                            <h4>Suitability</h4>
+                            <p>
+                                Use this method to confirm and insert a transfer booking after asking to the user the origin and destination/time, 
+                                selected the vehicle and its rates (<code>ratedService</code>) and asking the requester and passenger data.
+                            </p>
+
+                            <h4>HTTP method and endpoint</h4>
+                            <pre class="highlight prettyprint">
+POST /bookings/services</pre>
+
+                            <h4>Parameters</h4>
+
+                            <ul>
+                                <li>serviceRequest (body)</li>
+                            </ul>
+
+                            <h3>Interactive Panel</h3>
+
+                            <p>To try it or see the parameters and errors' list, use our <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_PostService">interactive panel</a>.</p>
+
+                            <h4>Example</h4>
+                            <p>
+                                This example inserts a new transfer service with a <code>ratedService.ObjectToken</code> that represent a <code>ratedService</code>
+                                with a trip from a hotel to the MIA airport.
+                            </p>
+
+                            <h6>Request</h6>
+                            <pre class="highlight prettyprint">
+POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services
+Access-Token:yourProductionAccessToken</pre>
+
+                            <%--<pre class="highlight prettyprint linenums highlight-line [25]">--%>
+                            <pre data-highlight-line="25" class="highlight prettyprint linenums">
+{
+  "requester": {
+    "firstName": "Peter",
+    "lastName": "Pan",
+    "email": "peterpan@dot.com",
+    "phone": "",
+    "title": "Sr",
+    "languageCode": "en"
+  },
+  "serviceRequest": [
+    {
+      "passenger": {
+        "company": none,
+        "firstName": "Peter",
+        "lastName": "Pan",
+        "email": "peterpan@dottransfers.com",
+        "phone": "",
+        "cellPhone": "",
+        "title": "Sr",
+        "languageCode": "en"
+      },
+      "passengerCount": "1",
+      "luggageCount": "1",
+      "comments": "",
+      "ratedServiceObjectToken": "08eb9a4f492e4c23b8fbcd73cd93c327",
+      "flight": null,
+      "complementaryAddressData": null
+    }
+  ]
+}
+</pre>
+
+                            <h6>Response</h6>
+                            <%--<pre class="highlight prettyprint linenums highlight-line [3,80]">--%>
+                            <pre data-highlight-line="3,80" class="highlight prettyprint linenums">
+[
+  {
+    "code": "7315",
+    "scheduleDate": "2014-12-17T18:30:00",
+    "scheduleDateUtc": "2014-12-17T23:30:00Z",
+    "serviceType": "PTP",
+    "rutePoints": [
+      {
+        "action": "PU",
+        "order": 0,
+        "location": {
+          "name": "Miami Beach Resort & Spa, Collins Avenue, Miami Beach, FL, United States",
+          "address": "4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "address2": null,
+          "summary": "Miami Beach Resort & Spa, 4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "countryCode": "US",
+          "latitude": "25.823953",
+          "longitude": "-80.121568",
+          "category": "establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": {
+            "timeZoneId": "America/New_York",
+            "timeZoneName": "Eastern Standard Time",
+            "rawOffset": -18000,
+            "dstOffset": -14400
+          }
+        },
+        "flight": null
+      },
+      {
+        "action": "DO",
+        "order": 1,
+        "location": {
+          "name": "Miami International Airport (MIA)",
+          "address": "Miami, Florida, United States",
+          "address2": null,
+          "summary": "Miami International Airport (MIA) - Miami, Florida, United States",
+          "countryCode": "US",
+          "latitude": "25.793199539184",
+          "longitude": "-80.29060363769",
+          "category": "airport;establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": null
+        },
+        "flight": null
+      }
+    ],
+    "timeRequired": 0,
+    "passenger": {
+      "company": null,
+      "firstName": "Peter",
+      "lastName": "Pan",
+      "eMail": "peterpan@dottransfers.com",
+      "phone": "",
+      "cellPhone": "",
+      "title": "Sr",
+      "languageCode": "en"
+    },
+    "passengerCount": 1,
+    "luggageCount": 1,
+    "roundTrip": "no",
+    "comments": "",
+    "vehicle": {
+      "category": "STD",
+      "descrip": "Standard Sedan",
+      "obs": "Standard Sedan",
+      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "maxPax": 3,
+      "maxLuggage": 2,
+      "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
+      "featuresIds": "|31|33|34|36|",
+      "finalRate": 103.15,
+      "quantity": 1,
+      "minimumTimeRequired": 180
+    },
+    "status": "Online Payment pending",
+    "freeCancellationDueDate": "2014-12-17T21:30:00Z",
+    "paymentGatewayUrl": "https://redapp.dottransfers.com/paygateway/Default.aspx?enc=3i6VYsQS5uB9N",
+    "paymentConfirmationCode": "",
+    "links": [
+      {
+        "rel": "self",
+        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315"
+      },
+      {
+        "rel": "cancel",
+        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315/freecancellations"
+      }
+    ]
+  }
+]
+</pre>
+
+                            <h4>Usage notes</h4>
+                            <p>
+                                Number of passengers and amount of luggage: your application must ask the user to specify the number of passengers and luggage, 
+                                but it must limit this amount too, according to the available capacity in the selected vehicle. To know the vehicle's capacity, 
+                                read the <code>ratedService.vehicle.maxPax</code> and <code>ratedService.vehicel.maxLuggage</code> properties, obtained previously 
+                                with the method <a href="#documentation-booking-get">GET /bookings/ratedServices</a>.
+                            </p>
+                            
+							<h4>Error response</h4>
+
+							<p>
+								For more information about HTTP status codes and error response formats, see 
+							<a href="#ServiceStatus">Status codes and errors</a>.
+							</p>
+
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Verb</th>
+										<th>Response</th>
+										<th>ErrorCode</th>
+										<th>Reason</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>POST</td>
+										<td style="width: 130px">403 Forbidden</td>
+										<td class="errCodeCol">ERR.CLIENT.INACTIVE</td>
+										<td>Inactive client account.</td>
+									</tr>
+									<tr>
+										<td>POST</td>
+										<td></td>
+										<td class="errCodeCol">ERR.CLIENT.CREDITLIMIT</td>
+										<td>Credit limit exceeded.</td>
+									</tr>
+									<tr>
+										<td>POST</td>
+										<td></td>
+										<td class="errCodeCol">ERR.SRVREQ.PAYMENTMETHOD.NOTALLOWED </td>
+										<td>Payment method not allowed.</td>
+									</tr>
+									<tr>
+										<td>POST</td>
+										<td></td>
+										<td class="errCodeCol">ERR.SRVREQ.OVERWRITTENFINALRATE</td>
+										<td>OverwrittenFinalRate can not be lower than the FinalRate.</td>
+									</tr>
+								</tbody>
+							</table>                            
+
+                            <!-- Seccion: Get a Service-->
+                            <h3 id="documentation-booking-get" class="">Get a Service</h3>
+
+                            <p>It allows getting a transfer service.</p>
+
+                            <h4>Suitability</h4>
+
+                            <p>
+                                Use this method when you want to ask for the information of a transfer service and show it to the user as a summary after 
+                                making a reservation, or when you want to see its status after making a payment or a cancellation.
+                            </p>
+
+                            <h4>HTTP method and endpoint</h4>
+                            <pre class="highlight prettyprint">
+GET /bookings/services/{serviceCode}</pre>
+
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li>serviceCode</li>
+                            </ul>
+
+                            <h4>Interactive Panel</h4>
+                            <p>To try it or see the parameters and errors' list, use our <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_GetService">interactive panel</a>.</p>
+
+                            <h4>Example</h4>
+                            <p>This example gets the transfer service with serviceCode 7728.</p>
+
+                            <h6>Request</h6>
+                            <pre class="highlight prettyprint">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7728
+Access-Token:yourProductionAccessToken</pre>
+
+                            <h6>Response</h6>
+                            <pre class="highlight prettyprint linenums">
+[
+  {
+    "code": "7728",
+    "scheduleDate": "2014-12-17T18:30:00",
+    "scheduleDateUtc": "2014-12-17T23:30:00Z",
+    "serviceType": "PTP",
+    "rutePoints": [
+      {
+        "action": "PU",
+        "order": 0,
+        "location": {
+          "name": "Miami Beach Resort & Spa, Collins Avenue, Miami Beach, FL, United States",
+          "address": "4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "address2": null,
+          "summary": "Miami Beach Resort & Spa, 4833 Collins Ave, Miami Beach, FL 33140, United States",
+          "countryCode": "US",
+          "latitude": "25.823953",
+          "longitude": "-80.121568",
+          "category": "establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": {
+            "timeZoneId": "America/New_York",
+            "timeZoneName": "Eastern Standard Time",
+            "rawOffset": -18000,
+            "dstOffset": -14400
+          }
+        },
+        "flight": null
+      },
+      {
+        "action": "DO",
+        "order": 1,
+        "location": {
+          "name": "Miami International Airport (MIA)",
+          "address": "Miami, Florida, United States",
+          "address2": null,
+          "summary": "Miami International Airport (MIA) - Miami, Florida, United States",
+          "countryCode": "US",
+          "latitude": "25.793199539184",
+          "longitude": "-80.29060363769",
+          "category": "airport;establishment",
+          "isConcrete": "yes",
+          "searchText": null,
+          "objectToken": null,
+          "timeZone": null
+        },
+        "flight": null
+      }
+    ],
+    "timeRequired": 0,
+    "passenger": {
+      "company": null,
+      "firstName": "Peter",
+      "lastName": "Pan",
+      "eMail": "peterpan@dottransfers.com",
+      "phone": "",
+      "cellPhone": "",
+      "title": "Sr",
+      "languageCode": "en"
+    },
+    "passengerCount": 1,
+    "luggageCount": 1,
+    "roundTrip": "no",
+    "comments": "",
+    "vehicle": {
+      "category": "STD",
+      "descrip": "Standard Sedan",
+      "obs": "Standard Sedan",
+      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "maxPax": 3,
+      "maxLuggage": 2,
+      "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
+      "featuresIds": "|31|33|34|36|",
+      "finalRate": 103.15,
+      "quantity": 1,
+      "minimumTimeRequired": 180
+    },
+    "freeCancellationDueDate": "2014-12-17T21:30:00Z",
+    "paymentGatewayUrl": "https://redapp.dottransfers.com/paygateway/Default.aspx?enc=3i6VYsQS5uB9N",
+    "paymentConfirmationCode": "",
+    "links": [
+      {
+        "rel": "self",
+        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315"
+      },
+      {
+        "rel": "cancel",
+        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315/freecancellations"
+      }
+    ]
+  }
+]</pre>
+
+                            <!-- Seccion: Get Services -->
+                            <h3 id="documentation-booking-getServices" class="">Get Services by status or status group</h3>
+
+                            <p>
+                                It allows getting transfer services by your state or group of states.
+                            </p>
+
+                            <p>
+                                A group of states, allows you to filter different states with similar features. For example, to show the 
+                                    user all canceled services, you can filter by Canceled group and this will get the services in state 
+                                    <code>CancelledSupplier</code>, <code>CancelledRequesterFree</code>, <code>CancelledRequesterCost</code>, <code>CancelledInProgressSupplier</code> and 
+                                    <code>ancelledInProgressPax</code>.                           
+                            </p>
+
+                            <p>The following table shows the groups of states and their relationship with the states:</p>
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 33%">StatusCode</th>
+                                        <th>Group</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>PaymentPending</td>
+                                        <td>PaymentPending</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PaymentExpired</td>
+                                        <td>Canceled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reserved</td>
+                                        <td>Reserved</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledSupplier</td>
+                                        <td>Canceled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledRequesterFree</td>
+                                        <td>Canceled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledRequesterCost</td>
+                                        <td>Canceled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>InProgress</td>
+                                        <td>InProgress</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WithPax</td>
+                                        <td>InProgress</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NoShow</td>
+                                        <td>Canceled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledInProgressSupplier</td>
+                                        <td>Canceled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CancelledInProgressPax</td>
+                                        <td>Canceled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Realized</td>
+                                        <td>Realized</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Down</td>
+                                        <td>Canceled</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h4>Suitability</h4>
+                            <p>Use this method when you want to ask for the information of a transfer services and show it to the user as realiced or pending transfers services list.</p>
+
+                            <h4>HTTP method and endpoint</h4>
+                            <pre class="highlight prettyprint">
+GET /bookings/services?status=Reserved</pre>
+
+                            <pre class="highlight prettyprint">
+GET /bookings/services?statusGroup=Canceled</pre>
+
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li>status</li>
+                                <li>statusGroup</li>
+                            </ul>
+
+
+                            <h4>Interactive Panel</h4>
+                            <p>
+                                To try it or see the parameters and errors' list, use our
+                                <br />
+                                <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_GetService">interactive panel</a>
+                                for GET /bookings/services?status=Reserved.
+                                <br />
+                            </p>
+
+                            <h4>Example</h4>
+                            <p>This example gets the transfer services with <code>statusGroup</code> Reserved.</p>
+
+
+                            <h6>Request</h6>
+                            <pre class="highlight prettyprint">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services?statusGroup=Reserved
+Access-Token:yourProductionAccessToken</pre>
+
+                            <h6>Response</h6>
+                            A list of services.
+                            
+						<h4>Error response</h4>
+
+						<p>
+							For more information about HTTP status codes and error response formats, see 
+						<a href="#ServiceStatus">Status codes and errors</a>.
+						</p>
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Verb</th>
+									<th>Response</th>
+									<th>ErrorCode</th>
+									<th>Reason</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>GET</td>
+									<td style="width: 130px">403 Forbidden</td>
+									<td class="errCodeCol">ERR.FILTER.TOOSHORT</td>
+									<td>The filter must be more specific.</td>
+								</tr>
+								<tr>
+									<td>GET</td>
+									<td>403 Forbidden</td>
+									<td class="errCodeCol">ERR.FILTER.UNAUTHORIZEDPROFILE</td>
+									<td>Not authorized filter for the profile of the authenticated user.</td>
+								</tr>
+								<tr>
+									<td>GET</td>
+									<td>404 Not Found</td>
+									<td class="errCodeCol"></td>
+									<td>User not found.</td>
+								</tr>
+							</tbody>
+						</table>
+                        </div>
+
+                        <!-- Seccion: Cancel a Service-->
+                        <h3 id="documentation-booking-cancel" class="">Cancel a Service</h3>
+
+                        <p>
+                            It allows to cancel a transfer service with or without charges according to the transfer's cancelation date 
+                                and the limit time to cancel without charges. (<code>freeCancellationDueDate</code>).
+                        </p>
+
+                        <div class="bs-callout bs-callout-info">
+                            If you need to cancel with freecancellations but the current date is greater than the expire date without charges, 
+                                you will get a 403 http code.
+                                If you are trying to cancel a reservation with cancellations but the current date is the same or less than the 
+                                expire date cancellation time without charges, you will get a 403 http code.                                
+                        </div>
+
+                        <h4>Suitability</h4>
+                        <p>Use this method when you want to give the user the possibility to cancel a transfer service that has been previously booked.</p>
+
+                        <h4>HTTP method and endpoint</h4>
+                        <pre class="highlight prettyprint">
+PUT /bookings/services/{serviceCode}/freecancellations</pre>
+
+                        <pre class="highlight prettyprint">
+PUT /bookings/services/{serviceCode}/cancellations</pre>
+
+                        <h4>Parameters</h4>
+                        <ul>
+                            <li>serviceCode</li>
+                        </ul>
+
+
+                        <h4>Interactive Panel</h4>
+                        <p>
+                            To try it or see the parameters and errors' list, use our
+                            <br />
+                            <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_CancelServiceWithoutCharges">interactive panel</a>
+                            for PUT /bookings/services/{serviceCode}/freecancellations.
+                            <br />
+                            or
+                            <br />
+                            <a href="<%=GetApiUrl()%>/panel/ui/index.html#!/Booking/Booking_CancelServiceWithCharges">interactive panel</a>
+                            for PUT /bookings/services/{serviceCode}/cancellations.
+                        </p>
+
+                        <h4>Example</h4>
+                        <p>This example cancels the transfer service with serviceCode 7728.</p>
+
+
+                        <h6>Request</h6>
+                        <pre class="highlight highlight prettyprint">
+GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7728/freecancellations
+Access-Token:yourProductionAccessToken</pre>
+
+                        <pre class="highlight highlight prettyprint linenums">
+{
+  "reason": "My appointment was canceled",
+  "requester": {
+    "firstName": "Peter",
+    "lastName": "Pan",
+    "email": "peterpan@dottransfers.com",
+    "phone": "",
+    "cellPhone": "",
+    "title": "",
+    "languageCode": ""
+  }
+}</pre>
+
+                        <h6>Response</h6>
+                        <pre class="highlight prettyprint linenums">
+{
+  "links": [
+    {
+      "rel": "self",
+      "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315"
+    }
+  ]
+}</pre>
+                        
+							<h4>Error response</h4>
+
+							<p>
+								For more information about HTTP status codes and error response formats, see 
+							<a href="#ServiceStatus">Status codes and errors</a>.
+							</p>
+                        
+                            <code>PUT /bookings/services/{serviceCode}/freecancellations</code> error codes:
+
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Verb</th>
+										<th>Response</th>
+										<th>ErrorCode</th>
+										<th>Reason</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>PUT</td>
+										<td style="width: 130px">403 Forbidden</td>
+										<td class="errCodeCol">ERR.SERVICE.NOTFREECANCELLATION</td>
+										<td>Cancellation is not free of charge. You must use bookings/services/{serviceCode} /cancellations.</td>
+									</tr>
+									<tr>
+										<td>PUT</td>
+										<td>403 Forbidden</td>
+										<td class="errCodeCol">ERR.SERVICE.UNCANCELABLE</td>
+										<td>Service already cancelled.</td>
+									</tr>
+									<tr>
+										<td>PUT</td>
+										<td>404 Not found</td>
+										<td class="errCodeCol"></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+                        
+                            <code>PUT /bookings/services/{serviceCode}/cancellations</code> error codes:                            
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Verb</th>
+										<th>Response</th>
+										<th>ErrorCode</th>
+										<th>Reason</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>PUT</td>
+										<td style="width: 130px">403 Forbidden</td>
+										<td class="errCodeCol">ERR.SERVICE.FREECANCELLATION</td>
+										<td>Cancellation must be free of charge. You must use bookings/services/{serviceCode} /freecancellations.</td>
+									</tr>
+									<tr>
+										<td>PUT</td>
+										<td>403 Forbidden</td>
+										<td class="errCodeCol">ERR.SERVICE.UNCANCELABLE</td>
+										<td>Service already cancelled.</td>
+									</tr>
+									<tr>
+										<td>PUT</td>
+										<td>404 Not found</td>
+										<td class="errCodeCol"></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>                        
+
+                        <!-- Seccion: Payment-->
+                        <h3 id="documentation-booking-payment" class="">Payment</h3>
+
+                        <p>
+                            When the reservation is created, it remains in the <strong>“Online Payment pending”</strong> status until it is paid. If the reservation is not paid 
+                            before the limit time, the status of the reservation will change to <strong>"Online Payment expired"</strong>. If paid on time, it will change to 
+                            <strong>"Reserved"</strong>.
+                        </p>
+
+                        <p>
+                            In order to pay for a reservation you will need to redirect the user to our payment gateway. The link to the gateway and the limit time to 
+                            make the payment will need to be taken from the properties <code>services.paymentGatewayUrl</code> and <code>service.paymentDueDate</code>. 
+                            These properties are obtained in the response after inserting a reservation through the method <a href="#documentation-booking-book">POST /bookings/services</a> or when obtaining 
+                            the service data through the method <a href="#documentation-booking-get">GET /bookings/services</a>.
+                        </p>
+
+
+                        <p>
+                            After making the payment, the application will be able to make a query to verify that it is in the <strong>“Reserved”</strong> status and to obtain and 
+                            show the user the transaction confirmation code through the property <code>service.paymentConfirmationCode</code>.
+                        </p>
+
+                        <h4>Return to the application</h4>
+                        <p>
+                            A Return URL to your application could be configured when inserting a transfer service with the method <a href="#documentation-booking-book">POST /bookings/services</a>. 
+                            In order to do that you will need to specify the URL in the property <code>serviceRequest.returnUrlFromPaymentGateway</code>.<br />
+                            When you redirect the user to the payment gateway and the user finishes the transaction, the gateway will automatically redirect the user to the provided 
+                            URL making a POST with the following parameters:
+                        </p>
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>serviceCode</td>
+                                    <td>The service code corresponding to the transaction.</td>
+                                </tr>
+                                <tr>
+                                    <td>transactionStatus</td>
+                                    <td>The transaction status.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4>TransactionStatus</h4>
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Ok</td>
+                                    <td>It shows that the transaction ended correctly.</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>UserCancel</td>
+                                    <td>It shows that the user cancelled the transaction.</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>ErrorCanRetry</td>
+                                    <td>serviceCodeIt shows that the transaction ended with an error and could not be completed but the user can retry.</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Error</td>
+                                    <td>It shows that the transaction ended with an error and could not be completed.</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>AlreadyPaid</td>
+                                    <td>It shows that the transfer has been already paid.</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>PaymentExpired</td>
+                                    <td>It shows that the limit time to make the online payment expired.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+
+                        <%--                        <!-- Seccion: Quote operations-->
+                        <div class="bs-docs-section">                            
+                            <h1 id="documentation-quotes" class="page-header">Quote operations</h1>                                                    
+                        
+                            <!-- Seccion: Request a Quote-->                        
+                            <h3 id="documentation-quotes-request" class="">Request a Quote</h3>          
+                            <p>Documentation in progress</p>
+                        </div>   --%>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display: inline;">
+            <img height="1" width="1" style="border-style: none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/988716861/?value=1.00&amp;currency_code=ARS&amp;label=rAZMCLLD11cQvb661wM&amp;guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+
+</body>
+</html>

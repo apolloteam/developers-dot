@@ -1,0 +1,99 @@
+﻿/*body {
+    margin-top: 110px;
+}*/
+
+#topHeader {
+    top: 0;
+    position: relative; /*fixed;*/
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1030;
+    height: 100px;
+    background-color: #3D4245;
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 10px;
+    margin-bottom: 30px;
+    border-bottom: 5px solid #2db5d0;
+}
+
+/*
+    Customizaciones de prettify.
+*/
+/*Numera todas las líneas al usar prettify.*/
+.prettyprint ol.linenums > li {
+    list-style-type: decimal;
+    background: white;
+}
+
+.prettyprint ol.linenums {
+    color: #BDBDBD;
+}
+
+pre.prettyprint {
+    background-color: white;
+    border: 1px solid #ECECF0;
+    padding: 8px;
+    word-wrap: normal;
+}
+
+/*#wrapper {
+    margin-top: 110px;
+}*/
+
+/*.container {
+    margin-top: 110px;
+}*/
+
+.bs-docs-sidebar .nav > li > a:hover, .bs-docs-sidebar .nav > li > a:focus {
+    color: #2db5d0;
+    border-left-color: #2db5d0;
+}
+
+.back-to-top:hover, .bs-docs-theme-toggle:hover {
+    color: #2db5d0;
+}
+
+.bs-docs-sidebar .nav > .active > a, .bs-docs-sidebar .nav > .active:hover > a, .bs-docs-sidebar .nav > .active:focus > a {
+    color: #2db5d0;
+    border-left-color: #2db5d0;
+}
+
+
+.btn-clipboard-hover {
+    background-color: #2db5d0;
+    border-color: #2db5d0;
+    color: white ;
+    font-weight: 700;
+}
+
+.subItemMenu {
+  padding-left: 50px !important;  
+}
+
+.subItemMenu:hover {
+  padding-left: 49px !important;
+}
+
+li.active > a.subItemMenu {
+    padding-left: 48px !important;
+}
+
+li.active > a.subItemMenu:hover {
+    padding-left: 48px !important;
+}
+
+li.active > a.subItemMenu:focus:hover {
+    padding-left: 47px !important;
+}
+
+.resaltarLinea
+{
+    background-color: yellow !important;    
+}
+
+.errCodeCol 
+{
+    font-size: 10px;
+}
