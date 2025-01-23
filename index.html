@@ -177,7 +177,7 @@
                             <br />
                             <br />
                             <p>Integrate your business with our services</p>
-                            <a href="<%=this.GetDotTransfersUrl()%>/integrations/" class="btn btn-primary" role="button">Get a production ApiKey now</a>
+                            <a href="https://integrations/" class="btn btn-primary" role="button">Get a production ApiKey now</a>
                         </div>
 
                         <!-- Seccion: Rest Basics -->
@@ -218,7 +218,7 @@
 
                                 <h4>Example</h4>
                                 <pre class="highlight prettyprint">
-<%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=jfk</pre>
+                                    https://api.dottransfers.com/v2/locations?query=jfk</pre>
 
                                 <h3>Version compatibility</h3>
                                 <ul>
@@ -258,16 +258,16 @@
                                 <h3>URIs with request parameters</h3>
                                 <p>Basic structure example:</p>
                                 <pre class="highlight prettyprint">
-v1/locations?query=jfk</pre>
+v2/locations?query=jfk</pre>
                                 <p>Where:</p>
-                                <p><code>/v1</code> is the individual API release version.</p>
+                                <p><code>/v2</code> is the individual API release version.</p>
                                 <p><code>/locations</code> is the URI of a requested object or resource.</p>
                                 <p><code>query=jfk</code> is the parameter and value pair (jfk is the IATA code for John F. Kennedy International Airport).</p>
 
                                 <h3>URIs with variables</h3>
                                 <p>Basic structure example:</p>
                                 <pre class="highlight prettyprint ">
-v1/bookings/services/{serviceCode}</pre>
+v2/bookings/services/{serviceCode}</pre>
                                 <p>
                                     URI variables are shown in curly braces ({ }). You must replace the variable information with a value.
                             In the preceding example, replace the whole word (including the curly braces) with a transfer service code, such as <code>3775</code>.
@@ -275,10 +275,10 @@ v1/bookings/services/{serviceCode}</pre>
 
                                 <h3>Method and URL example</h3>
                                 <pre class="highlight prettyprint ">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=jfk</pre>
+GET https://api.dottransfers.com/v2/locations?query=jfk</pre>
                                 <p>Where:</p>
                                 <p><code>GET</code> is the HTTP method. The HTTP method is the verb that performs the action on the resource in the URI. </p>
-                                <p><code><%=GetApiUrl()%></code> is the base URL.</p>
+                                <p><code>https://</code> is the base URL.</p>
                             </div>
 
                             <!-- Seccion: Authentication and Authorization -->
@@ -295,7 +295,7 @@ GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=jfk</pre>
                                 <ol>
                                     <li>
                                         <p>Request for a trial AccessToken:</p>
-                                        <p><a href="<%=this.GetDevelopersUrl()%>/GetAccessTokenForm.aspx">Get a trial AccessToken now</a></p>
+                                        <p><a href="https://GetAccessTokenForm.aspx">Get a trial AccessToken now</a></p>
                                         <br />
                                     </li>
                                     <li>
@@ -311,7 +311,7 @@ GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=jfk</pre>
                                 <ol>
                                     <li>
                                         <p>Create an account in our system:</p>
-                                        <p><a href="<%=GetDotTransfersUrl()%>/integrations/">Create an account now...</a></p>
+                                        <p><a href="https://integrations/">Create an account now...</a></p>
                                         <br />
                                     </li>
                                     <li>
@@ -352,7 +352,7 @@ Content-Type:application/json</pre>
                                 <p>To use the DotTransfers' API operations, the client must send into every request's header the <code>AccessToken</code>, obtained from the /auth/accessToken method.</p>
                                 <h6>Request</h6>
                                 <pre class="highlight prettyprint ">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO
+GET https://api.dottransfers.com/v2/locations?query=MCO
 Access-Token:yourProductionAccessToken</pre>
 
                             </div>
@@ -446,7 +446,7 @@ Access-Token:yourProductionAccessToken</pre>
                                     If your application does not support HTTP status codes, you can add <code>suppress_response_codes</code> parameter at the end of the URL in the request and this will always return a <strong>200</strong> HTTP status code (although there was an error) but in the property statusMessage.code will contain the real HTTP code.<br />
                                 </div>
                                 <pre class="highlight prettyprint">
-POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services&suppress_response_codes
+POST https://api.dottransfers.com/v2/bookings/services&suppress_response_codes
 </pre>
                             </div>
 
@@ -479,11 +479,11 @@ POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services&suppress_res
   "links": [
     {
       "rel": "self",
-      "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/775"
+      "hRef": "https://api.dottransfers.com/v2/bookings/services/775"
     },
     {
       "rel": "cancel",
-      "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/775/freecancellations"
+      "hRef": "https://api.dottransfers.com/v2/bookings/services/775/freecancellations"
     }
   ]
 }</pre>
@@ -506,7 +506,7 @@ POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services&suppress_res
 
                                 <p>
                                     You can use it with a trial or production AccessToken:<br />
-                                    <a href="<%=GetApiUrl()%>/panel">Interactive Panel</a>
+                                    <a href="https://panel">Interactive Panel</a>
                                 </p>
                             </div>
 
@@ -517,7 +517,7 @@ POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services&suppress_res
                             <h1 id="gettingStarted" class="page-header">Getting Started</h1>
 
                             <div class="bs-callout bs-callout-info">
-                                Using DotTransfers APIs is cost-free. Visit <a href="<%=GetDotTransfersUrl()%>/integrations/">DotTransfers…</a>
+                                Using DotTransfers APIs is cost-free. Visit <a href="https:///integrations/">DotTransfers…</a>
                                 for further commercial information.
                             </div>
                             <p>
@@ -532,11 +532,11 @@ POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services&suppress_res
                                 <ol>
                                     <li>
                                         <p>Request for a trial AccessToken</p>
-                                        <p><a href="<%=GetApiProtocol()%>developer.dottransfers.com/GetAccessTokenForm.aspx">Get a trial AcessToken now…</a></p>
+                                        <p><a href="https://developer.dottransfers.com/GetAccessTokenForm.aspx">Get a trial AcessToken now…</a></p>
                                         <br />
                                     </li>
                                     <li>
-                                        <p>Copy the generated AccessToken to use it from our <a href="<%=GetApiUrl()%>/panel">interactive panel</a> or from a test application.</p>
+                                        <p>Copy the generated AccessToken to use it from our <a href="https://panel">interactive panel</a> or from a test application.</p>
                                         <div class="bs-callout bs-callout-info">
                                             The AccessToken obtained will be valid for 6 months or 100 hits.
                                     When authentication is performed using a trial AccessToken, the rates shown are not real.
@@ -551,7 +551,7 @@ POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services&suppress_res
                                 <ol>
                                     <li>
                                         <p>Create an account in our system:</p>
-                                        <p><a href="<%=GetDotTransfersUrl()%>/integrations/">Create an account now...</a></p>
+                                        <p><a href="https:///integrations/">Create an account now...</a></p>
                                         <br />
                                     </li>
                                     <li>
@@ -597,7 +597,7 @@ Content-Type:application/json</pre>
                                         <p>Get the list of available vehicles and rates for a transfer from a hotel to an airport:</p>
                                         <h5>Request</h5>
                                         <pre class="highlight prettyprint ">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/ratedservices?scheduleDate=2014-12-17T18:30&originSearchText=miami+beach+resort+%26+spa&destinationSearchText=mia
+GET https://api.dottransfers.com/v2/bookings/ratedservices?scheduleDate=2014-12-17T18:30&originSearchText=miami+beach+resort+%26+spa&destinationSearchText=mia
 Access-Token:yourProductionAccessToken</pre>
                                         <h6>Response</h6>
                                         <pre class="highlight prettyprint linenums">
@@ -609,7 +609,7 @@ Access-Token:yourProductionAccessToken</pre>
       "category": "STD",
       "descrip": "Standard Sedan",
       "obs": "Standard Sedan",
-      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "imageUrl": "https://app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
       "maxPax": 3,
       "maxLuggage": 2,
       "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
@@ -678,7 +678,7 @@ Access-Token:yourProductionAccessToken</pre>
                                         </p>
                                         <h6>Request</h6>
                                         <pre class="highlight prettyprint ">
-POST <%= GetApiProtocol()%>api.dottransfers.com/v1/bookings/services
+POST https://api.dottransfers.com/v2/bookings/services
 Access-Token:yourProductionAccessToken</pre>
 
                                         <pre class="highlight prettyprint linenums">
@@ -785,7 +785,7 @@ Access-Token:yourProductionAccessToken</pre>
       "category": "STD",
       "descrip": "Standard Sedan",
       "obs": "Standard Sedan",
-      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "imageUrl": "https://app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
       "maxPax": 3,
       "maxLuggage": 2,
       "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
@@ -801,11 +801,11 @@ Access-Token:yourProductionAccessToken</pre>
     "links": [
       {
         "rel": "self",
-        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315"
+        "hRef": "https://api.dottransfers.com/v2/bookings/services/7315"
       },
       {
         "rel": "cancel",
-        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315/freecancellations"
+        "hRef": "https://api.dottransfers.com/v2/bookings/services/7315/freecancellations"
       }
     ]
   }
@@ -844,7 +844,7 @@ POST /auth/accessToken</pre>
 
                                 <h6>Request</h6>
                                 <pre class="highlight prettyprint ">
-POST <%=GetApiProtocol()%>api.dottransfers.com/v1/auth/accessToken
+POST https://api.dottransfers.com/v2/auth/accessToken
 Content-Type:application/json</pre>
 
                                 <pre class="highlight prettyprint linenums">
@@ -865,7 +865,7 @@ Content-Type:application/json</pre>
                                 <p>To use the dotTransfer's API operations, the client must send the <code>AccessToken</code> into every request header.</p>
 
                                 <pre class="highlight prettyprint ">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO
+GET https://api.dottransfers.com/v2/locations?query=MCO
 Access-Token:yourProductionAccessToken</pre>
 
                                 <h4>Error response</h4>
@@ -903,7 +903,7 @@ Access-Token:yourProductionAccessToken</pre>
                                 <!--                            <p>To use the DotTransfers API operations, the client must send the <code>AccessToken</code> into every request's header.</p>
 
                                     <pre class="highlight prettyprint">
-                                    GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO
+                                    GET https://api.dottransfers.com/v2/locations?query=MCO
                                     Access-Token:yourProductionAccessToken</pre> 
                                 -->
                             </div>
@@ -992,7 +992,7 @@ GET /locations</pre>
 
                                 <h6>Request</h6>
                                 <pre class="highlight prettyprint ">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/locations?query=MCO</pre>
+GET https://api.dottransfers.com/v2/locations?query=MCO</pre>
 
                                 <h6>Response</h6>
                                 <pre class="highlight prettyprint linenums">
@@ -1200,7 +1200,7 @@ GET /bookings/ratedservices</pre>
 
                             <h6>Request</h6>
                             <pre class="highlight prettyprint">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/ratedservices?scheduleDate=2014-12-17T18:30&originSearchText=miami+beach+resort+%26+spa&destinationSearchText=mia
+GET https://api.dottransfers.com/v2/bookings/ratedservices?scheduleDate=2014-12-17T18:30&originSearchText=miami+beach+resort+%26+spa&destinationSearchText=mia
 Access-Token:yourProductionAccessToken</pre>
 
                             <h6>Response</h6>
@@ -1213,7 +1213,7 @@ Access-Token:yourProductionAccessToken</pre>
       "category": "STD",
       "descrip": "Standard Sedan",
       "obs": "Standard Sedan",
-      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "imageUrl": "https://app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
       "maxPax": 3,
       "maxLuggage": 2,
       "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
@@ -1494,7 +1494,7 @@ POST /bookings/services</pre>
 
                             <h6>Request</h6>
                             <pre class="highlight prettyprint">
-POST <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services
+POST https://api.dottransfers.com/v2/bookings/services
 Access-Token:yourProductionAccessToken</pre>
 
                             <!--<pre class="highlight prettyprint linenums highlight-line [25]">-->
@@ -1604,7 +1604,7 @@ Access-Token:yourProductionAccessToken</pre>
       "category": "STD",
       "descrip": "Standard Sedan",
       "obs": "Standard Sedan",
-      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "imageUrl": "https://app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
       "maxPax": 3,
       "maxLuggage": 2,
       "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
@@ -1620,11 +1620,11 @@ Access-Token:yourProductionAccessToken</pre>
     "links": [
       {
         "rel": "self",
-        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315"
+        "hRef": "https://api.dottransfers.com/v2/bookings/services/7315"
       },
       {
         "rel": "cancel",
-        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315/freecancellations"
+        "hRef": "https://api.dottransfers.com/v2/bookings/services/7315/freecancellations"
       }
     ]
   }
@@ -1712,7 +1712,7 @@ GET /bookings/services/{serviceCode}</pre>
 
                             <h6>Request</h6>
                             <pre class="highlight prettyprint">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7728
+GET https://api.dottransfers.com/v2/bookings/services/7728
 Access-Token:yourProductionAccessToken</pre>
 
                             <h6>Response</h6>
@@ -1787,7 +1787,7 @@ Access-Token:yourProductionAccessToken</pre>
       "category": "STD",
       "descrip": "Standard Sedan",
       "obs": "Standard Sedan",
-      "imageUrl": "<%=GetApiProtocol()%>app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
+      "imageUrl": "https://app.dottransfers.com/UsrDocuments/Suppliers/Images/VehiclesTypes/VehCate_1_US.jpg",
       "maxPax": 3,
       "maxLuggage": 2,
       "features": "|AC|Airport Meet & Greet|Chofer profesional|Celular|",
@@ -1802,11 +1802,11 @@ Access-Token:yourProductionAccessToken</pre>
     "links": [
       {
         "rel": "self",
-        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315"
+        "hRef": "https://api.dottransfers.com/v2/bookings/services/7315"
       },
       {
         "rel": "cancel",
-        "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315/freecancellations"
+        "hRef": "https://api.dottransfers.com/v2/bookings/services/7315/freecancellations"
       }
     ]
   }
@@ -1923,7 +1923,7 @@ GET /bookings/services?statusGroup=Canceled</pre>
 
                             <h6>Request</h6>
                             <pre class="highlight prettyprint">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services?statusGroup=Reserved
+GET https://api.dottransfers.com/v2/bookings/services?statusGroup=Reserved
 Access-Token:yourProductionAccessToken</pre>
 
                             <h6>Response</h6>
@@ -2018,7 +2018,7 @@ PUT /bookings/services/{serviceCode}/cancellations</pre>
 
                         <h6>Request</h6>
                         <pre class="highlight highlight prettyprint">
-GET <%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7728/freecancellations
+GET https://api.dottransfers.com/v2/bookings/services/7728/freecancellations
 Access-Token:yourProductionAccessToken</pre>
 
                         <pre class="highlight highlight prettyprint linenums">
@@ -2041,7 +2041,7 @@ Access-Token:yourProductionAccessToken</pre>
   "links": [
     {
       "rel": "self",
-      "hRef": "<%=GetApiProtocol()%>api.dottransfers.com/v1/bookings/services/7315"
+      "hRef": "https://api.dottransfers.com/v2/bookings/services/7315"
     }
   ]
 }</pre>
